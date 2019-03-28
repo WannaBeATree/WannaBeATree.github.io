@@ -1,0 +1,237 @@
+body {
+    margin: 0 auto;
+    background-color: #444;
+}
+
+.zone {
+    /*padding:30px 50px;*/
+    /*cursor:pointer;*/
+    color:#FFF;
+    font-size:2em;
+    border-radius:4px;
+    border:1px solid #bbb;
+    transition: all 0.3s linear;
+}
+
+.zone:hover {
+    -webkit-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    -moz-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    -o-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+}
+
+
+/***********************************************************************
+ *  Container Main
+ **********************************************************************/
+
+
+.container-main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/***********************************************************************
+ *  Container Legends Picked
+ **********************************************************************/
+
+
+.container-legends-picked{
+    display: flex;
+    flex-direction: column;
+}
+
+.legends-picked{
+    padding: 10px;
+    width: 33vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.legend-picture{
+    height: 150px;
+    width: 250px;
+}
+
+.legend-picture > img{
+    width: 100%;
+    height: 100%;
+}
+
+            /* Legend picked */
+
+.legends-unselect{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 10px;
+    justify-content: space-around;
+}
+.legends-unselect > li{
+    padding: 0px;
+
+}
+.legends-unselect > li > img{
+    height: 30px;
+    width: 50px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.grayout{
+    filter: grayscale(100%);
+}
+
+/***********************************************************************
+ *  Container Map
+ **********************************************************************/
+
+.container-map{
+    width: 33vw;
+}
+
+.container-map > div >img{
+    width: 500px;
+    height: 500px;
+}
+
+/***********************************************************************
+ *  Container d20 rolls
+ **********************************************************************/
+
+.container-roll{
+    display: flex;
+    width: 66vw;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin: 50px;
+}
+
+.container-dice{
+    display: flex;
+    width: 66vw;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.d20{
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.d20 > img{
+    width: 100%;
+    height: 100%;
+}
+.d20 > input{
+    position: relative;
+    left: -37px;
+    top: 13px;
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    background-color: rgba(0,0,0,0.0);
+    border: 0px;
+    margin-top: 3px;
+    margin-left: 2px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#container-roll-map > .d20 > input {
+    color: red;
+}
+
+.btn-roll{
+    margin: 10px;
+    padding: 0px 40px
+}
+
+
+/***********************************************************************
+ *  Nav Bar
+ **********************************************************************/
+.main-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    font-size: 0.7em;
+}
+
+@media only screen and (max-width: 600px) {
+    .main-nav {
+        font-size: 0.5em;
+        padding: 0;
+    }
+}
+
+.push {
+    margin-left: auto;
+}
+
+li {
+    padding: 20px;
+}
+
+a {
+    color: #f5f5f6;
+    text-decoration: none;
+}
+    
+
+/***********************************************************************
+ *  Cover
+ **********************************************************************/
+.container {
+    /*show heigh: auto*/
+    height: 50vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/***********************************************************************
+ *  Grid Panel
+ **********************************************************************/
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 20px;
+}
+
+.box {
+    background-color: #444;
+    padding: 130px;
+    margin: 20px;
+}
+
+.box > img {
+    width: 100%;
+}
+
+/***********************************************************************
+ *  Footer
+ **********************************************************************/
+footer {
+    text-align: center;
+}
+
+/*https://paulund.co.uk/how-to-create-shiny-css-buttons*/
+/***********************************************************************
+ *  Grey Background
+ **********************************************************************/
+.grey {
+   background-color: #444;
+}
+
