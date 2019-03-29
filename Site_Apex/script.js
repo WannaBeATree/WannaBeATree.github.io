@@ -74,9 +74,13 @@
       return false;
     }
 
+    /*********************************************** /
+     *           BACKGROUND COLOR STUFF            * /
+     ************************************************/
 var color1 = document.querySelector(".color1");
 var color2 = document.querySelector(".color2");
 var body = document.getElementById("gradient");
+var button = document.querySelectorAll("button")[1];
 
 
 function setGradient(){
@@ -87,6 +91,46 @@ function setGradient(){
 		+ ")";
 }
 
-color1.addEventListener("input", setGradient);
+function rgbToHex(color) {
+    color = ""+ color;
+    if (!color || color.indexOf("rgb") < 0) {
+        return;
+    }
 
+    if (color.charAt(0) == "#") {
+        return color;
+    }
+
+    var nums = /(.*?)rgb\((\d+),\s*(\d+),\s*(\d+)\)/i.exec(color),
+        r = parseInt(nums[2], 10).toString(16),
+        g = parseInt(nums[3], 10).toString(16),
+        b = parseInt(nums[4], 10).toString(16);
+
+    return "#"+ (
+        (r.length == 1 ? "0"+ r : r) +
+        (g.length == 1 ? "0"+ g : g) +
+        (b.length == 1 ? "0"+ b : b)
+    );
+}
+function randomNumber(x){
+	return (Math.floor(Math.random()*x)+1);
+}
+
+function randomColor(){
+	var r = randomNumber(255);
+	var g = randomNumber(255);
+	var b = randomNumber(255);
+	return "rgb(" + r + ", " + g + ", " + b +")";
+}
+
+function changeBG(){
+	var random1 = randomColor();
+	var random2 = randomColor();
+	
+	body.style.background = "linear-gradient(to right, "+ random1 + ", " + random2 +")";
+	color1.value = rgbToHex(random1);
+	color2.value = rgbToHex(random2);
+}
+color1.addEventListener("input", setGradient);
 color2.addEventListener("input", setGradient);
+button.addEventListener("click", changeBG);
