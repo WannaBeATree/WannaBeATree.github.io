@@ -4,6 +4,8 @@ const funk = async function(){
     
     const fetched = await fetch(url);
     const data = await fetched.json();
+    console.log("data", data);
+
     for (const key in data) {
         document.write(`${key}: ${data[key]}`);
         document.write("<br>");
