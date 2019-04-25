@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    background-color: lightblue;
+}
+
+canvas{
+    background-color: #fff;
+    margin:20px;
+}
+
+input{
+    text-align: center;
+}
+
+div{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
