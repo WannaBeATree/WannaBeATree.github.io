@@ -9,6 +9,14 @@ var canvas = document.getElementById("canvas");
 var input = document.getElementById("size");
 var context = canvas.getContext("2d");
 
+// hit enter to activate button
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+     event.preventDefault();
+     document.getElementById("myBtn").click();
+    }
+});
+
 function drawBoard(sizeX){
     console.log("size" + sizeX);
     console.log("context" + context);
