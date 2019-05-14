@@ -2,6 +2,7 @@ var bw = 600;
 var bh = 600;
 var p = 10;
 var size = 60;
+var colorSquareSize = 60;
 var cw = bw + (p*2) + 1;
 var ch = bh + (p*2) + 1;
 
@@ -67,7 +68,12 @@ function drawBoard(sizeX){
 function reDraw(){
     clearCanvas(canvas);
     size = input.value;
+    colorSquareSize = input.value;
     drawBoard(parseInt(size));
+}
+
+function setSquareSize(sqSize){
+    colorSquareSize = sqSize;
 }
 
 function returnClickedPoint(canvas, event) {
@@ -84,10 +90,10 @@ function returnClickedSquareX(x, sizeX) {
 function returnClickedSquareY(y, sizeY) {
     return Math.floor(y/sizeY)+1;
 }
-
+//
 function colorSquare(x, y) {
-    console.log("colorSquare: test");
-    context.fillRect( p + size*(x-1),  p + size*(y-1), size, size);
+    //
+    context.fillRect( p + size*(x-1),  p + size*(y-1), colorSquareSize, colorSquareSize);
     context.stroke();
 }
 
