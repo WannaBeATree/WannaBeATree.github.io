@@ -9,31 +9,32 @@
     <canvas id="canvas" width="620px" height="620px"></canvas>
     
     <div>
-        <div>
-            <button id="squareSizeBtn1" onclick="setGridSize(10)">10x10</button>
-        </div>
-        <div>
-            <button id="squareSizeBtn2" onclick="setGridSize(20)">20x20</button>
-        </div>
-        <div>
-            <button id="squareSizeBtn3" onclick="setGridSize(30)">30x30</button>
-        </div>
-        <div>
-            <button id="squareSizeBtn4" onclick="setGridSize(40)">40x40</button>
-        </div>
-        <div>
-            <button id="squareSizeBtn5" onclick="setGridSize(50)">50x50</button>
-        </div>
-        <div>
-            <button id="squareSizeBtn6" onclick="setGridSize(60)">60x60</button>
-        </div>
-
         <input type="text" id="squareSize" name="squareSize" value="60" size="5";>
-        <button id="squareSizeBtn" onclick="reDrawInput()">Change!</button>
+        <button id="squareSizeBtn" onclick="reDrawInput()">Manual GRID change!</button>
         10, 20, 30, 40, 50, 60
+        <div>
+            <button id="squareSizeBtn1" onclick="setGridSize(10)">60x60</button>
+        </div>
+        <div>
+            <button id="squareSizeBtn2" onclick="setGridSize(20)">50x50</button>
+        </div>
+        <div>
+            <button id="squareSizeBtn3" onclick="setGridSize(30)">40x40</button>
+        </div>
+        <div>
+            <button id="squareSizeBtn4" onclick="setGridSize(40)">30x30</button>
+        </div>
+        <div>
+            <button id="squareSizeBtn5" onclick="setGridSize(50)">20x20</button>
+        </div>
+        <div>
+            <button id="squareSizeBtn6" onclick="setGridSize(60)">10x10</button>
+        </div>
     </div>
     <div>
         <!-- Paint Buttons for 10x10 to 60x60 -->
+        Paintsize: 
+        <p id="paintSizeHTML">60</p>
         <div>
             <button id="paintSizeBtn1" onclick="setPaintSize(10)">10</button>
         </div>
@@ -52,10 +53,6 @@
         <div>
             <button id="paintSizeBtn6" onclick="setPaintSize(60)">60</button>
         </div>
-
-        Paintsize: 
-        <p id="paintSizeHTML">60</p>
-
     </div>
     <script type="text/javascript" src="script.js"></script>
 
