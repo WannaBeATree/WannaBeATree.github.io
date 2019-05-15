@@ -1,14 +1,15 @@
 var bw = 600;
 var bh = 600;
 var p = 10;
-var size = 60;
+var squareSize = 60;
 var colorSquareSize = 60;
 var cw = bw + (p*2) + 1;
 var ch = bh + (p*2) + 1;
 
 var canvas = document.getElementById("canvas");
-var input = document.getElementById("size");
+var input = document.getElementById("squareSize");
 var context = canvas.getContext("2d");
+var paintSizeHTML = document.getElementById("paintSizeHTML");
 
 // hit enter to activate button
 input.addEventListener("keyup", function(event) {
@@ -46,9 +47,9 @@ function addMouseUp(event){
     document.removeEventListener("mousedown", addMouseUp);
 }
 
-// draws the checkboard with variable sizes
+// draws the checkboard with variable squareSizes
 function drawBoard(sizeX){
-    console.log("size" + sizeX);
+    console.log("squareSize" + sizeX);
     console.log("context" + context);
     for (var x = 0; x <= bw; x += sizeX) {
         context.moveTo(0.5 + x + p, p);
@@ -65,15 +66,24 @@ function drawBoard(sizeX){
 }
 
 // called in html: onclick="reDraw()"
-function reDraw(){
-    clearCanvas(canvas);
-    size = input.value;
-    colorSquareSize = input.value;
-    drawBoard(parseInt(size));
+function reDrawInput(){
+    setGridSize(input.value);
 }
 
-function setSquareSize(sqSize){
+function reDraw(){
+    clearCanvas(canvas);
+    drawBoard(parseInt(squareSize));
+}
+
+function setPaintSize(sqSize){
     colorSquareSize = sqSize;
+    paintSizeHTML.innerHTML = sqSize;
+}
+
+function setGridSize(sqSize){
+    squareSize = sqSize;
+    setPaintSize(sqSize);
+    reDraw();
 }
 
 function returnClickedPoint(canvas, event) {
@@ -82,7 +92,7 @@ function returnClickedPoint(canvas, event) {
     var y = event.clientY - rect.top  - p;
     console.log("x: " + x + " y: " + y);
 
-    colorSquare(returnClickedSquareX(x, size), returnClickedSquareY(y, size));
+    colorSquare(returnClickedSquareX(x, squareSize), returnClickedSquareY(y, squareSize));
 }
 function returnClickedSquareX(x, sizeX) {
     return Math.floor(x/sizeX)+1;
@@ -93,7 +103,7 @@ function returnClickedSquareY(y, sizeY) {
 //
 function colorSquare(x, y) {
     //
-    context.fillRect( p + size*(x-1),  p + size*(y-1), colorSquareSize, colorSquareSize);
+    context.fillRect( p + squareSize*(x-1),  p + squareSize*(y-1), colorSquareSize, colorSquareSize);
     context.stroke();
 }
 
@@ -110,6 +120,67 @@ function clearCanvas(cnv) {
     ctx.restore();                  // restore the transform
   }
 
-drawBoard(size);
+drawBoard(squareSize);
 
 
+
+
+
+
+
+// var canvas = document.getElementById("canvas"),
+//     ctx = canvas.getContext("2d"),
+//     drawCanvas = document.getElementById("drawCanvas"),
+//     drawCtx = drawCanvas.getContext("2d"),
+//     painting = false,
+//     lastX = 0,
+//     lastY = 0,
+//     curX = 0,
+//     curY = 0,
+//     startX = 0,
+//     startY = 0,
+//     lineThickness = 1;
+
+// canvas.width = canvas.height = 600;
+
+// drawCanvas.width = drawCanvas.height = 600;
+
+// drawCanvas.onmousedown = function(e) {
+//     startX = e.pageX - this.offsetLeft;
+//     startY = e.pageY - this.offsetTop;
+//     painting = true;
+
+// };
+
+// drawCanvas.onmouseup = function(e){
+//     painting = false;
+
+//     ctx.strokeStyle = "#000";
+//     ctx.beginPath();
+//     ctx.moveTo(startX, startY);
+//     ctx.lineTo(lastX, lastY);
+//     ctx.stroke();
+
+//     drawCtx.clearRect(0, 0, 600, 600);
+// }
+
+// drawCanvas.onmouseclick = function(e) {
+
+//     startX = e.pageX - this.offsetLeft;
+//     startY = e.pageY - this.offsetTop;
+
+//     painting = true;
+// };
+
+
+// drawCanvas.onmousemove = function(e) {
+//     if(painting){
+//         lastX = e.pageX - this.offsetLeft;
+//         lastY = e.pageY - this.offsetTop;
+//         drawCtx.clearRect(0,0,600,600);
+//         drawCtx.beginPath();
+//         drawCtx.moveTo(startX ,startY );
+//         drawCtx.lineTo(lastX, lastY);
+//         drawCtx.stroke();
+//     }
+// }
