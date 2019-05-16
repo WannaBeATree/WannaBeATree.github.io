@@ -1,45 +1,61 @@
-var bw = 600;
-var bh = 600;
-var p = 10;
-var squareSize = 60;
-var colorSquareSize = 60;
-var cw = bw + (p*2) + 1;
-var ch = bh + (p*2) + 1;
+// Variable-names are top down 
+// html is in front of names, when the varibale/constant can be seen on the website ||| if it is behind the scenes, then no html
+// html does not mean the value can be changed from the site, only seen. that way it is easier to find and remember (I hope -> maybe read up on naming conventions?)
+
+// VARIABLES 
+// ADDING EVENT LISTER
+// EVENT LISTER FUNCTIONS
+// FUNCTIONS that can affekt LINES of the CANVAS GRID
+// FUNCTIONS that can COLOR the CANVAS GRID
+// CLASSES and their Methods
+// FUNCTIONS that give Information
+// CODE ON STARTUP
+
+// **********
+// VARIABLES 
+// ********** 
+var htmlCanvasGridWidth = 600;
+var htmlCanvasGridHeight = 600;
+var htmlCanvasGridMargin = 10;
+var htmlCanvasGridSquareSize = 60;
+var htmlCanvasPaintSquareSize = 60;
 
 var canvas = document.getElementById("canvas");
-var input = document.getElementById("squareSize");
-var context = canvas.getContext("2d");
+var input = document.getElementById("htmlCanvasGridSquareSize");
 var paintSizeHTML = document.getElementById("paintSizeHTML");
+var btnManual = document.getElementById("squareSizeBtn");
+
+var context = canvas.getContext("2d");
+
+
+// *******************
+// ADDING EVENT LISTER
+// ******************* 
 
 // hit enter to activate button
 input.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
      event.preventDefault();
-     document.getElementById("myBtn").click();
+     btnManual.click();
     }
 });
 
-
-//https://stackoverflow.com/questions/9880279/how-do-i-add-a-simple-onclick-event-handler-to-a-canvas-element
-// canvas.addEventListener("click", function(event) {   
-//     returnClickedPoint(canvas, event);
-// }, false);
-
 canvas.addEventListener("mousedown", function(event) {   
-    returnClickedPoint(canvas, event);
+    colorPointGiven(returnClickedPoint(canvas, event));
 }, false);
 
 canvas.addEventListener("mousedown", function (event) {
     console.log("mouse is down");
-
     canvas.addEventListener("mousemove", addMouseOver);
-
     document.addEventListener("mouseup", addMouseUp);
 });
 
+// **********************
+// EVENT LISTER FUNCTIONS
+// ********************** 
 function addMouseOver(event){
     console.log("mouse is moving");
-    returnClickedPoint(canvas, event);
+    colorPointGiven(returnClickedPoint(canvas, event));
 }
 function addMouseUp(event){
     console.log("mouse is not down or moving");
@@ -47,18 +63,21 @@ function addMouseUp(event){
     document.removeEventListener("mousedown", addMouseUp);
 }
 
-// draws the checkboard with variable squareSizes
+// **************************************************
+// FUNCTIONS that can affekt LINES of the CANVAS GRID
+// **************************************************
+// draws the checkboard with variable htmlCanvasGridSquareSize
 function drawBoard(sizeX){
-    console.log("squareSize" + sizeX);
+    console.log("htmlCanvasGridSquareSize" + sizeX);
     console.log("context" + context);
-    for (var x = 0; x <= bw; x += sizeX) {
-        context.moveTo(0.5 + x + p, p);
-        context.lineTo(0.5 + x + p, bh + p);
+    for (var x = 0; x <= htmlCanvasGridWidth; x += sizeX) {
+        context.moveTo(0.5 + x + htmlCanvasGridMargin, htmlCanvasGridMargin);
+        context.lineTo(0.5 + x + htmlCanvasGridMargin, htmlCanvasGridHeight + htmlCanvasGridMargin);
     }
 
-    for (var x = 0; x <= bh; x += sizeX) {
-        context.moveTo(p, 0.5 + x + p);
-        context.lineTo(bw + p, 0.5 + x + p);
+    for (var x = 0; x <= htmlCanvasGridHeight; x += sizeX) {
+        context.moveTo(htmlCanvasGridMargin, 0.5 + x + htmlCanvasGridMargin);
+        context.lineTo(htmlCanvasGridWidth + htmlCanvasGridMargin, 0.5 + x + htmlCanvasGridMargin);
     }
 
     context.strokeStyle = "black";
@@ -72,39 +91,13 @@ function reDrawInput(){
 
 function reDraw(){
     clearCanvas(canvas);
-    drawBoard(parseInt(squareSize));
-}
-
-function setPaintSize(sqSize){
-    colorSquareSize = sqSize;
-    paintSizeHTML.innerHTML = sqSize;
+    drawBoard(parseInt(htmlCanvasGridSquareSize));
 }
 
 function setGridSize(sqSize){
-    squareSize = sqSize;
+    htmlCanvasGridSquareSize = sqSize;
     setPaintSize(sqSize);
     reDraw();
-}
-
-function returnClickedPoint(canvas, event) {
-    var rect = canvas.getBoundingClientRect();
-    var x = event.clientX - rect.left - p;
-    var y = event.clientY - rect.top  - p;
-    console.log("x: " + x + " y: " + y);
-
-    colorSquare(returnClickedSquareX(x, squareSize), returnClickedSquareY(y, squareSize));
-}
-function returnClickedSquareX(x, sizeX) {
-    return Math.floor(x/sizeX)+1;
-}
-function returnClickedSquareY(y, sizeY) {
-    return Math.floor(y/sizeY)+1;
-}
-//
-function colorSquare(x, y) {
-    //
-    context.fillRect( p + squareSize*(x-1),  p + squareSize*(y-1), colorSquareSize, colorSquareSize);
-    context.stroke();
 }
 
 // returns blank Canvas
@@ -118,9 +111,64 @@ function clearCanvas(cnv) {
     ctx.clearRect(0, 0, cnv.width, cnv.height);
   
     ctx.restore();                  // restore the transform
-  }
+}
 
-drawBoard(squareSize);
+// ****************************************
+// FUNCTIONS that can COLOR the CANVAS GRID
+// ****************************************
+function colorPointGiven(Point) {
+    colorSquare(returnClickedSquareX(Point.x, htmlCanvasGridSquareSize), returnClickedSquareY(Point.y, htmlCanvasGridSquareSize));
+}
+
+function setPaintSize(sqSize){
+    htmlCanvasPaintSquareSize = sqSize;
+    paintSizeHTML.innerHTML = sqSize;
+}
+
+function colorSquare(x, y) {
+    context.fillRect(   htmlCanvasGridMargin + htmlCanvasGridSquareSize*(x-1),      // From 1
+                        htmlCanvasGridMargin + htmlCanvasGridSquareSize*(y-1),      // From 2
+                        htmlCanvasPaintSquareSize,                                  // To 1
+                        htmlCanvasPaintSquareSize);                                 // To 2
+    context.stroke();
+}
+// **************************
+// CLASSES and their Methods
+// **************************
+// Define a class like this
+function Point(x, y) {
+    // Add object properties like this
+    this.x = x;
+    this.y = y;
+}
+// Add methods like this.  All Point objects will be able to invoke this
+Point.prototype.getPoint = function(){
+    console.log("this.x: " + this.x + " this.y: " + this.y);
+};
+
+// *******************************
+// FUNCTIONS that give Information
+// *******************************
+function returnClickedPoint(canvas, event) {
+    var rect = canvas.getBoundingClientRect();
+    var x = event.clientX - rect.left - htmlCanvasGridMargin;
+    var y = event.clientY - rect.top  - htmlCanvasGridMargin;
+    var canvasPoint = new Point(x, y);
+    return canvasPoint;
+}
+
+function returnClickedSquareX(x, sizeX) {
+    return Math.floor(x/sizeX)+1;
+}
+function returnClickedSquareY(y, sizeY) {
+    return Math.floor(y/sizeY)+1;
+}
+
+// ***************
+// CODE ON STARTUP
+// ***************
+
+drawBoard(htmlCanvasGridSquareSize);
 
 
 
