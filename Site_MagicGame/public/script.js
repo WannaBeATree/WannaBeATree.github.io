@@ -20,10 +20,10 @@ var htmlCanvasGridMargin = 10;
 var htmlCanvasGridSquareSize = 60;
 var htmlCanvasPaintSquareSize = 60;
 
-var canvas = document.getElementById("canvas");
-var input = document.getElementById("htmlCanvasGridSquareSize");
-var paintSizeHTML = document.getElementById("paintSizeHTML");
-var btnManual = document.getElementById("squareSizeBtn");
+var canvas = document.querySelector("#canvas");
+var input = document.querySelector("#htmlCanvasGridSquareSize");
+var paintSizeHTML = document.querySelector("#paintSizeHTML");
+var btnManual = document.querySelector("#squareSizeBtn");
 
 var context = canvas.getContext("2d");
 
