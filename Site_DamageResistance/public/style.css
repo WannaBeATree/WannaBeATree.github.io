@@ -1,0 +1,72 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 0px;
+}
+
+div{
+    background-color: grey;
+    margin: 2px;
+    border: solid black 2px;
+    height: auto;
+}
+
+.container-main{
+	display: grid;
+	grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 2fr 1fr;
+    border: solid blue 2px;
+}
+
+.elementsinthemiddle{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.elementsinthemiddle > button{
+    height: 50px;
+    width: 150px;
+}
+.vertical{
+    grid-row: 1/-1; 
+    height: 98vh;
+}
+.listelements{
+    overflow:auto;
+}
+.textcenter{
+    text-align: center;
+}
+.scrollbarleft{
+    direction:rtl;
+}
+.horizontalFill{
+	grid-column: span 2; 
+}
+.statsgrid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 33vh;
+}
+.statsgrid>div{
+    width: 50px;
+}
+.weapon{
+    cursor: pointer;
+    transition: all 0.07s linear;
+}
+.weapon:hover{
+    box-shadow: rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+}
+
+#attack{
+    background-color: red;
+}
+
+#randomMonster{
+    background-color: yellow;
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Damage Resistance</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body class="container-main">
+    <!-- **************-->
+    <!-- Weapons listed-->
+    <!-- **************-->
+    <div class="vertical listelements scrollbarleft textcenter">
+        <div class="weapon" onclick="pickWeapon()">Weapon1</div>
+        <div class="weapon">Weapon2</div>
+        <div class="weapon">Weapon3</div>
+        <div class="weapon">Weapon4</div>
+        <div class="weapon">Weapon5</div>
+        <div class="weapon">Weapon6</div>
+        <div class="weapon">Weapon7</div>
+        <div class="weapon">Weapon8</div>
+        <div class="weapon">Weapon9</div>
+        <div class="weapon">Weapon10</div>
+        <div class="weapon">Weapon11</div>
+        <div class="weapon">Weapon12</div>
+        <div class="weapon">Weapon13</div>
+        <div class="weapon">Weapon14</div>
+        <div class="weapon">Weapon15</div>
+        <div class="weapon">Weapon16</div>
+        <div class="weapon">Weapon17</div>
+        <div class="weapon">Weapon18</div>
+        <div class="weapon">Weapon19</div>
+        <div class="weapon">Weapon20</div>
+        <div class="weapon">Weapon21</div>
+        <div class="weapon">Weapon22</div>
+        <div class="weapon">Weapon23</div>
+        <div class="weapon">Weapon24</div>
+        <div class="weapon">Weapon25</div>
+        <div class="weapon">Weapon26</div>
+        <div class="weapon">Weapon27</div>
+        <div class="weapon">Weapon28</div>
+        <div class="weapon">Weapon29</div>
+        <div class="weapon">Weapon30</div>
+        <div class="weapon">Weapon31</div>
+        <div class="weapon">Weapon32</div>
+        <div class="weapon">Weapon33</div>
+        <div class="weapon">Weapon34</div>
+        <div class="weapon">Weapon35</div>
+        <div class="weapon">Weapon36</div>
+        <div class="weapon">Weapon37</div>
+        <div class="weapon">Weapon38</div>
+        <div class="weapon">Weapon39</div>
+        <div class="weapon">Weapon40</div>
+        <div class="weapon">Weapon41</div>
+        <div class="weapon">Weapon42</div>
+        <div class="weapon">Weapon43</div>
+        <div class="weapon">Weapon44</div>
+        <div class="weapon">Weapon45</div>
+        <div class="weapon">Weapon46</div>
+        <div class="weapon">Weapon47</div>
+        <div class="weapon">Weapon48</div>
+        <div class="weapon">Weapon49</div>
+        <div class="weapon">Weapon50</div>
+        <div class="weapon">Weapon51</div>
+        <div class="weapon">Weapon52</div>
+        <div class="weapon">Weapon53</div>
+        <div class="weapon">Weapon54</div>
+        <div class="weapon">Weapon55</div>
+        <div class="weapon">Weapon56</div>
+        <div class="weapon">Weapon57</div>
+        <div class="weapon">Weapon58</div>
+        <div class="weapon">Weapon59</div>
+        <div class="weapon">Weapon60</div>
+        <div class="weapon">Weapon61</div>
+        <div class="weapon">Weapon62</div>
+        <div class="weapon">Weapon63</div>
+        <div class="weapon">Weapon64</div>
+        <div class="weapon">Weapon65</div>
+        <div class="weapon">Weapon66</div>
+        <div class="weapon">Weapon67</div>
+        <div class="weapon">Weapon68</div>
+        <div class="weapon">Weapon69</div>
+        <div class="weapon">Weapon70</div>
+        <div class="weapon">Weapon81</div>
+        <div class="weapon">Weapon82</div>
+        <div class="weapon">Weapon83</div>
+        <div class="weapon">Weapon84</div>
+        <div class="weapon">Weapon85</div>
+        <div class="weapon">Weapon86</div>
+        <div class="weapon">Weapon87</div>
+        <div class="weapon">Weapon88</div>
+        <div class="weapon">Weapon89</div>
+        <div class="weapon">Weapon90</div>
+        <div class="weapon">Weapon91</div>
+        <div class="weapon">Weapon92</div>
+        <div class="weapon">Weapon93</div>
+        <div class="weapon">Weapon94</div>
+        <div class="weapon">Weapon95</div>
+        <div class="weapon">Weapon96</div>
+        <div class="weapon">Weapon97</div>
+        <div class="weapon">Weapon98</div>
+        <div class="weapon">Weapon99</div>
+        <div class="weapon">Weapon100</div>
+    </div>
+    <!-- *************-->
+    <!-- Weapon picked-->
+    <!-- *************-->
+    <div class="vertical textcenter">
+        <p id="weaponName">-</p>
+        Potential Damage: <span id="damagePotential">-</span>
+        <div class="statsgrid">
+            <div class="textcenter">
+                cut
+                <p id="cut"></p>
+            </div>
+            <div class="textcenter">
+                pierce
+                <p id="pierce"></p>
+            </div>
+            <div class="textcenter">
+                blunt
+                <p id="blunt"></p>
+            </div>
+        </div>
+    </div>
+    <!-- *****-->
+    <!-- ENEMY-->
+    <!-- *****-->
+    <div class="textcenter">
+        <p id="enemyName">-</p>
+        Health: <span id="enemyHealth">-</span>
+        <div class="statsgrid">
+            <p>Resistance:</p>
+            <div class="textcenter">
+                cut
+                <p id="cutRes"></p>
+            </div>
+            <div class="textcenter">
+                pierce
+                <p id="pierceRes"></p>
+            </div>
+            <div class="textcenter">
+                blunt
+                <p id="bluntRes"></p>
+            </div>
+        </div>
+    </div>
+    <!-- **************-->
+    <!-- Attack Results-->
+    <!-- **************-->
+    <div class="textcenter">
+        Damage Done: <span id="damageDone">-</span>
+        <div class="listelements textcenter" id="status"></div>
+    </div>
+    <!-- *******-->
+    <!-- Buttons-->
+    <!-- *******-->
+    <div class="horizontalFill elementsinthemiddle">
+            <button id="attack" onclick="attack()">Attack!</button>
+            <button id="randomMonster" onclick="clearStatus()">New Monster</button>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>
